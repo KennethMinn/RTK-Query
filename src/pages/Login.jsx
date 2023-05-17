@@ -1,18 +1,25 @@
 import { useState } from "react";
 import { PasswordInput, TextInput } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../store/api/authApi";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, setToken } from "../store/services/auth-reducer";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [login] = useLoginMutation();
+  const nav = useNavigate();
+  const dispatch = useDispatch();
 
   const logInHandler = async (e) => {
     e.preventDefault();
     try {
       const user = { email, password };
-      const data = await login(user);
+      const { data } = await login(user);
+      if (data?.success) nav("/dashboard");
+      dispatch(setUser(data.user));
+      dispatch(setToken(data.token));
       console.log(data);
     } catch (err) {
       console.error(err);

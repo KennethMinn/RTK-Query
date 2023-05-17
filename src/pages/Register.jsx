@@ -28,7 +28,7 @@ const Register = () => {
     <div className=" flex justify-center h-[650px] sm:h-screen items-center">
       <form
         onSubmit={registerHandler}
-        className="w-96 flex flex-col gap-6 shadow-lg p-10"
+        className="sm:w-96 w-full flex flex-col gap-6 shadow-lg p-10"
       >
         <h1 className=" text-2xl font-semibold">Register</h1>
         <TextInput
