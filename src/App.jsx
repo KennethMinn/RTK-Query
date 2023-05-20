@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import RouteGuard from "./components/RouteGuard";
+import CreateContact from "./components/CreateContact";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
             </RouteGuard>
           }
         />
+        <Route path="/create" element={<CreateContact />} />
       </Routes>
     </div>
   );
